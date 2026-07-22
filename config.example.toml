@@ -1,0 +1,36 @@
+# Yellowstone (Geyser) gRPC endpoint that drives slot-synchronous quoting.
+[yellowstone]
+endpoint = "https://your-yellowstone-endpoint:443"
+x_token = "your-access-token"
+# AMM programs whose pool accounts are tracked as a liquidity-freshness signal.
+account_owners = [
+  "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",  # Orca Whirlpools
+  "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8", # Raydium AMM v4
+  "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK", # Raydium CLMM
+]
+
+# Self-hosted Metis (jupiter-swap-api) instance.
+[metis]
+base_url = "http://127.0.0.1:8080"
+
+# Pairs to route. Amounts are in base units of the input mint.
+[[pairs]]
+name = "SOL/USDC"
+input_mint = "So11111111111111111111111111111111111111112"
+output_mint = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+amount = 1_000_000_000 # 1 SOL
+slippage_bps = 50
+
+[[pairs]]
+name = "USDC/SOL"
+input_mint = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+output_mint = "So11111111111111111111111111111111111111112"
+amount = 100_000_000 # 100 USDC
+slippage_bps = 50
+
+[[pairs]]
+name = "SOL/JUP"
+input_mint = "So11111111111111111111111111111111111111112"
+output_mint = "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN"
+amount = 500_000_000 # 0.5 SOL
+slippage_bps = 100
